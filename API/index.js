@@ -1,9 +1,11 @@
 const {ApolloServer} = require('apollo-server');
 const mongoose = require('mongoose');
 
-const MONGODB = "mongodb+srv://Vanaja2003elumalai:MyPasswprd123*@cluster0.boha9vm.mongodb.net/?retryWrites=true&w=majority"
+const MONGODB = "mongodb+srv://ramrragul:Password123*@cluster0.gvasnjo.mongodb.net/test"
 
-                // mongodb+srv://Vanaja2003elumalai:<password>@cluster0.boha9vm.mongodb.net/test
+// "mongodb+srv://Vanaja2003elumalai:MyPasswprd123*@cluster0.boha9vm.mongodb.net/?retryWrites=true&w=majority"
+
+
 //Apollo server
 // typeDefs : GraphQL Type definitions
 //resolver : how do we resolve quires / mutations
