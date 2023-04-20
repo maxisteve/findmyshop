@@ -1,24 +1,32 @@
 <template>
-  <component
-    :is="tag"
-    class="dropdown nav-item"
-    :class="{ show: isOpen }"
+  <div
+    class="dropdown"
+    :class="{ open: isOpen }"
     @click="toggleDropDown"
     v-click-outside="closeDropDown"
   >
+    <slot name="title">
+      <a
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        href="javascript:void(0)"
+      >
+        <i :class="icon"></i>
+        <p class="notification">
+          {{ title }}
+          <b class="caret"></b>
+        </p>
+      </a>
+    </slot>
     <slot></slot>
-  </component>
+  </div>
 </template>
 <script>
-// import ClickOutside from 'vue-click-outside';
-
 export default {
   name: "drop-down",
   props: {
-    tag: {
-      type: String,
-      default: "li",
-    },
+    title: String,
+    icon: String,
   },
   data() {
     return {
@@ -35,5 +43,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

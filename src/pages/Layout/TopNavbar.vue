@@ -1,189 +1,115 @@
 <template>
-  <nav
-    class="navbar navbar-expand-lg navbar-absolute"
-    :class="{ 'bg-white': showMenu, 'navbar-transparent': !showMenu }"
-  >
-    <div class="container-fluid">
-      <div class="navbar-wrapper">
-        <div
-          class="navbar-toggle d-inline"
-          :class="{ toggled: $sidebar.showSidebar }"
-        >
-          <button type="button" class="navbar-toggler" @click="toggleSidebar">
-            <span class="navbar-toggler-bar bar1"></span>
-
-            <span class="navbar-toggler-bar bar2"></span>
-
-            <span class="navbar-toggler-bar bar3"></span>
-          </button>
-        </div>
-
-        <a class="navbar-brand" href="javascript:void(0)"> {{ $route.name }}</a>
+  <md-toolbar md-elevation="0" class="md-transparent">
+    <div class="md-toolbar-row">
+      <div class="md-toolbar-section-start">
+        <h3 class="md-title">{{ $route.name }}</h3>
       </div>
+      <div class="md-toolbar-section-end">
+        <md-button
+          class="md-just-icon md-simple md-toolbar-toggle"
+          :class="{ toggled: $sidebar.showSidebar }"
+          @click="toggleSidebar"
+        >
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </md-button>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        @click="toggleMenu"
-        data-toggle="collapse"
-        data-target="#navigation"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-bar navbar-kebab"></span>
-
-        <span class="navbar-toggler-bar navbar-kebab"></span>
-
-        <span class="navbar-toggler-bar navbar-kebab"></span>
-      </button>
-
-      <div class="collapse navbar-collapse show text-left" v-show="showMenu">
-        <ul class="navbar-nav" :class="$rtl.isRTL ? 'mr-auto' : 'ml-auto'">
-          <li class="search-bar input-group" @click="searchModalVisible = true">
-            <button
-              class="btn btn-link"
-              id="search-button"
-              data-toggle="modal"
-              data-target="#searchModal"
+        <div class="md-collapse">
+          <div class="md-autocomplete">
+            <md-autocomplete
+              class="search"
+              v-model="selectedEmployee"
+              :md-options="employees"
             >
-              <i class="tim-icons icon-zoom-split"></i>
+              <label>Search...</label>
+            </md-autocomplete>
+          </div>
+          <md-list>
+            <md-list-item href="#/">
+              <i class="material-icons">dashboard</i>
+              <p class="hidden-lg hidden-md">Dashboard</p>
+            </md-list-item>
 
-              <span class="d-lg-none d-md-block">Search</span>
-            </button>
-          </li>
-
-          <modal
-            :show.sync="searchModalVisible"
-            class="modal-search"
-            id="searchModal"
-            :centered="false"
-            :show-close="true"
-          >
-            <input
-              slot="header"
-              v-model="searchQuery"
-              type="text"
-              class="form-control"
-              id="inlineFormInputGroup"
-              placeholder="SEARCH"
-            />
-          </modal>
-
-          <drop-down>
-            <a
-              href="javascript:void(0)"
-              data-toggle="dropdown"
-              class="dropdown-toggle nav-link"
-            >
-              <div class="notification d-none d-lg-block d-xl-block"></div>
-
-              <i class="tim-icons icon-sound-wave"></i>
-
-              <p class="d-lg-none text-left">Notifications</p>
-            </a>
-
-            <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">
-                  Mike John responded to your email
+            <!-- <md-list-item href="#/notifications" class="dropdown">
+              <drop-down>
+                <a slot="title" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="material-icons">notifications</i>
+                  <span class="notification">5</span>
+                  <p class="hidden-lg hidden-md">Notifications</p>
                 </a>
-              </li>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><a href="#">Mike John responded to your email</a></li>
+                  <li><a href="#">You have 5 new tasks</a></li>
+                  <li><a href="#">You're now friend with Andrew</a></li>
+                  <li><a href="#">Another Notification</a></li>
+                  <li><a href="#">Another One</a></li>
+                </ul>
+              </drop-down>
+            </md-list-item> -->
 
-              <li class="nav-link">
-                <a href="javascript:void(0)" class="nav-item dropdown-item">
-                  You have 5 more tasks
-                </a>
-              </li>
+            <li class="md-list-item">
+              <a
+                href="#/notifications"
+                class="md-list-item-router md-list-item-container md-button-clean dropdown"
+              >
+                <div class="md-list-item-content">
+                  <drop-down>
+                    <md-button
+                      slot="title"
+                      class="md-button md-just-icon md-simple"
+                      data-toggle="dropdown"
+                    >
+                      <md-icon>notifications</md-icon>
+                      <span class="notification">5</span>
+                      <p class="hidden-lg hidden-md">Notifications</p>
+                    </md-button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li><a href="#">Mike John responded to your email</a></li>
+                      <li><a href="#">You have 5 new tasks</a></li>
+                      <li><a href="#">You're now friend with Andrew</a></li>
+                      <li><a href="#">Another Notification</a></li>
+                      <li><a href="#">Another One</a></li>
+                    </ul>
+                  </drop-down>
+                </div>
+              </a>
+            </li>
 
-              <li class="nav-link">
-                <a href="javascript:void(0)" class="nav-item dropdown-item">
-                  Your friend Michael is in town
-                </a>
-              </li>
-
-              <li class="nav-link">
-                <a href="javascript:void(0)" class="nav-item dropdown-item">
-                  Another notification
-                </a>
-              </li>
-
-              <li class="nav-link">
-                <a href="javascript:void(0)" class="nav-item dropdown-item">
-                  Another one
-                </a>
-              </li>
-            </ul>
-          </drop-down>
-
-          <drop-down>
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-              <div class="photo">
-                <img src="@/assets/img/anime3.png" alt="Profile Photo" />
-              </div>
-
-              <b class="caret d-none d-lg-block d-xl-block"></b>
-
-              <p class="d-lg-none">Log out</p>
-            </a>
-
-            <ul class="dropdown-menu dropdown-navbar">
-              <li class="nav-link">
-                <a href="javascript:void(0)" class="nav-item dropdown-item">
-                  Profile
-                </a>
-              </li>
-
-              <li class="nav-link">
-                <a href="javascript:void(0)" class="nav-item dropdown-item">
-                  Settings
-                </a>
-              </li>
-
-              <li class="dropdown-divider"></li>
-
-              <li class="nav-link">
-                <a href="javascript:void(0)" class="nav-item dropdown-item">
-                  Log out
-                </a>
-              </li>
-            </ul>
-          </drop-down>
-        </ul>
+            <md-list-item href="#/user">
+              <i class="material-icons">person</i>
+              <p class="hidden-lg hidden-md">Profile</p>
+            </md-list-item>
+          </md-list>
+        </div>
       </div>
     </div>
-  </nav>
+  </md-toolbar>
 </template>
 
 <script>
-import DropDown from "@/components/Dropdown.vue";
-import Modal from "@/components/Modal.vue";
-
 export default {
-  components: {
-    DropDown,
-    Modal,
-  },
   data() {
     return {
-      searchModalVisible: false,
-      searchQuery: "",
-      showMenu: false,
+      selectedEmployee: null,
+      employees: [
+        "Jim Halpert",
+        "Dwight Schrute",
+        "Michael Scott",
+        "Pam Beesly",
+        "Angela Martin",
+        "Kelly Kapoor",
+        "Ryan Howard",
+        "Kevin Malone",
+      ],
     };
   },
   methods: {
     toggleSidebar() {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
     },
-    toggleMenu() {
-      this.showMenu = !this.showMenu;
-    },
-  },
-  computed: {
-    isRTL() {
-      return this.$rtl.isRTL;
-    },
   },
 };
 </script>
 
-<style></style>
+<style lang="css"></style>

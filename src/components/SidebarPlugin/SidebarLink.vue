@@ -1,18 +1,21 @@
 <template>
-  <component :is="tag" v-bind="$attrs" class="nav-item" tag="li">
-    <a class="nav-link">
-      <slot>
-        <i></i>
-
-        <p>{{ link.name }}</p>
-      </slot>
-    </a>
-  </component>
+  <li class="md-list-item">
+    <router-link
+      class="md-list-item-router md-list-item-container md-button-clean"
+      @click="hideSidebar"
+      v-bind="$attrs"
+    >
+      <div class="md-list-item-content md-ripple">
+        <slot>
+          <md-icon>{{ link.icon }}</md-icon>
+          <p>{{ link.name }}</p>
+        </slot>
+      </div>
+    </router-link>
+  </li>
 </template>
-
 <script>
 export default {
-  name: "sidebar-link",
   inject: {
     autoClose: {
       default: true,
@@ -35,11 +38,16 @@ export default {
     },
   },
   methods: {
-    isActive() {
-      return this.$el.classList.contains("active");
+    hideSidebar() {
+      if (
+        this.autoClose &&
+        this.$sidebar &&
+        this.$sidebar.showSidebar === true
+      ) {
+        this.$sidebar.displaySidebar(false);
+      }
     },
   },
 };
 </script>
-
 <style></style>

@@ -1,10 +1,14 @@
 <!--
 
 =========================================================
-* Tags: *
+* Vue Material Dashboard - v1.5.1
 =========================================================
 
+* Product Page: https://www.creative-tim.com/product/vue-material-dashboard
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/vue-material-dashboard/blob/master/LICENSE.md)
 
+* Coded by Creative Tim
 
 =========================================================
 
@@ -13,56 +17,38 @@
 -->
 
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html>
   <head>
-
     <meta charset="utf-8" />
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-
     <link
-      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
-      rel="stylesheet"
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="<%= webpackConfig.output.publicPath %>favicon.png"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Vue Material Dashboard by Creative Tim</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
 
+    <!--  Fonts and icons     -->
     <link
-      href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800"
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
       rel="stylesheet"
     />
-
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css"
-      rel="stylesheet"
-    />
-
-    <title>HostalMgnt by Tags</title>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
   </head>
-
   <body>
-
-    <noscript>
-
-      <strong>
-        We're sorry but vue-white-dashboard doesn't work properly without
-        JavaScript enabled. Please enable it to continue.
-      </strong>
-
-    </noscript>
-
-    <div class="wrapper" id="app"></div>
-
+    <div id="app"></div>
     <!-- built files will be auto injected -->
-
   </body>
-
 </html>
-

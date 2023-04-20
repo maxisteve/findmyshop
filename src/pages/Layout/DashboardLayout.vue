@@ -1,262 +1,94 @@
 <template>
-  <div class="wrapper">
-    <!-- <div class="wrapper" :class="{'nav-open': $sidebar.showSidebar}"> -->
+  <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
+    <notifications></notifications>
 
-    <side-bar :background-color="backgroundColor">
-      <!-- <mobile-menu slot="content"></mobile-menu> -->
-
-      <!-- <sidebar-link to="/dashboard">
-        <i class="tim-icons icon-chart-pie-36"></i>
-
-        <template v-if="!isRTL">
-          <p>Registration</p>
-        </template>
-
-      </sidebar-link> -->
-
+    <side-bar
+      :sidebar-item-color="sidebarBackground"
+      :sidebar-background-image="sidebarBackgroundImage"
+    >
+      <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/dashboard">
-        <i class="tim-icons icon-chart-pie-36"></i>
-
-        <template v-if="!isRTL">
-          <p>Dashboard</p>
-        </template>
-
-        <template v-else>
-          <p>لوحة القيادة</p>
-        </template>
+        <md-icon>dashboard</md-icon>
+        <p>Dashboard</p>
       </sidebar-link>
-
-      <sidebar-link to="/enquiry">
-        <i class="tim-icons icon-notes"></i>
-
-        <template v-if="!isRTL">
-          <p>Enquiry</p>
-        </template>
-
-        <template v-else>
-          <p>لوحة القيادة</p>
-        </template>
+      <sidebar-link to="/shop">
+        <md-icon>content_paste</md-icon>
+        <p>Shop</p>
       </sidebar-link>
-
-      <sidebar-link to="/studentdetails">
-        <i class="tim-icons icon-single-02"></i>
-
-        <template v-if="!isRTL">
-          <p>Student Details</p>
-        </template>
-
-        <template v-else>
-          <p>لوحة القيادة</p>
-        </template>
+      <sidebar-link to="/feedback">
+        <md-icon>content_paste</md-icon>
+        <p>Feed Back</p>
       </sidebar-link>
-
-      <sidebar-link to="/bill">
-        <i class="tim-icons icon-paper"></i>
-
-        <template v-if="!isRTL">
-          <p>Bill</p>
-        </template>
-
-        <template v-else>
-          <p>لوحة القيادة</p>
-        </template>
-      </sidebar-link>
-
-      <sidebar-link to="/hostelsetup">
-        <i class="tim-icons icon-bank"></i>
-
-        <template v-if="!isRTL">
-          <p>Hostel Setup</p>
-        </template>
-
-        <template v-else>
-          <p>لوحة القيادة</p>
-        </template>
-      </sidebar-link>
-
-      <sidebar-link to="/roommaster">
-        <i class="tim-icons icon-bank"></i>
-
-        <template v-if="!isRTL">
-          <p>Room Master</p>
-        </template>
-
-        <template v-else>
-          <p>لوحة القيادة</p>
-        </template>
-      </sidebar-link>
-
-      <sidebar-link to="/floormaster">
-        <i class="tim-icons icon-bank"></i>
-
-        <template v-if="!isRTL">
-          <p>Floor Master</p>
-        </template>
-
-        <template v-else>
-          <p>لوحة القيادة</p>
-        </template>
-      </sidebar-link>
-
-      <sidebar-link to="/blockmaster">
-        <i class="tim-icons icon-components"></i>
-
-        <template v-if="!isRTL">
-          <p>Block Master</p>
-        </template>
-
-        <template v-else>
-          <p>لوحة القيادة</p>
-        </template>
-      </sidebar-link>
-
-      <sidebar-link to="/icons">
-        <i class="tim-icons icon-atom"></i>
-
-        <template v-if="!isRTL">
-          <p>Icons</p>
-        </template>
-
-        <template v-else>
-          <p>الرموز</p>
-        </template>
-      </sidebar-link>
-
-      <!-- <sidebar-link to="/maps">
-        <i class="tim-icons icon-pin"></i>
-
-        <template v-if="!isRTL">
-          <p>Maps</p>
-        </template>
-
-        <template v-else>
-          <p>خرائط</p>
-        </template>
-      </sidebar-link> -->
-
-      <sidebar-link to="/notifications">
-        <i class="tim-icons icon-bell-55"></i>
-
-        <template v-if="!isRTL">
-          <p>Notifications</p>
-        </template>
-
-        <template v-else>
-          <p>إخطارات</p>
-        </template>
-      </sidebar-link>
-
-      <sidebar-link to="/user">
-        <i class="tim-icons icon-single-02"></i>
-
-        <template v-if="!isRTL">
-          <p>User Profile</p>
-        </template>
-
-        <template v-else>
-          <p>ملف تعريفي للمستخدم</p>
-        </template>
-      </sidebar-link>
-
       <sidebar-link to="/table">
-        <i class="tim-icons icon-puzzle-10"></i>
-
-        <template v-if="!isRTL">
-          <p>Table List</p>
-        </template>
-
-        <template v-else>
-          <p>قائمة الجدول</p>
-        </template>
+        <md-icon>content_paste</md-icon>
+        <p>User List</p>
       </sidebar-link>
-
+      <sidebar-link to="/user">
+        <md-icon>person</md-icon>
+        <p>User Profile</p>
+      </sidebar-link>
+      <!-- <sidebar-link to="/table">
+        <md-icon>content_paste</md-icon>
+        <p>Full Report</p>
+      </sidebar-link> -->
       <!-- <sidebar-link to="/typography">
-        <i class="tim-icons icon-align-center"></i>
-
-        <template v-if="!isRTL">
-          <p>Typography</p>
-        </template>
-
-        <template v-else>
-          <p>طباعة</p>
-        </template>
+        <md-icon>library_books</md-icon>
+        <p>Typography</p>
+      </sidebar-link>
+      <sidebar-link to="/icons">
+        <md-icon>bubble_chart</md-icon>
+        <p>Icons</p>
+      </sidebar-link>
+       -->
+      <!-- <sidebar-link to="/maps">
+        <md-icon>location_on</md-icon>
+        <p>Maps</p>
       </sidebar-link> -->
-
-      <!-- <sidebar-link to="/dashboard?enableRTL=true">
-        <i class="tim-icons icon-world"></i>
-
-        <template v-if="!isRTL">
-          <p>RTL Support</p>
-        </template>
-
-        <template v-else>
-          <p>دعم RTL</p>
-        </template>
+      <!-- <sidebar-link to="/notifications">
+        <md-icon>notifications</md-icon>
+        <p>Notifications</p>
       </sidebar-link> -->
-
-      <!-- <sidebar-link to="/upgradeToPro" class="active-pro">
-        <i class="tim-icons icon-spaceship"></i>
-
-        <template v-if="!isRTL">
-          <p>Upgrade to PRO</p>
-        </template>
-
-        <template v-else>
-          <p>التطور للاحترافية</p>
-        </template>
+      <!-- <sidebar-link to="/upgrade" class="active-pro">
+        <md-icon>unarchive</md-icon>
+        <p>Upgrade to PRO</p>
       </sidebar-link> -->
     </side-bar>
 
-    <sidebar-share :background-color.sync="backgroundColor"></sidebar-share>
-
-    <div class="main-panel" :data="backgroundColor">
+    <div class="main-panel">
       <top-navbar></top-navbar>
 
-      <dashboard-content @click.native="toggleSidebar"></dashboard-content>
+      <!-- <fixed-plugin
+        :color.sync="sidebarBackground"
+        :image.sync="sidebarBackgroundImage"
+      >
+      </fixed-plugin> -->
 
-      <content-footer></content-footer>
+      <dashboard-content> </dashboard-content>
+
+      <content-footer v-if="!$route.meta.hideFooter"></content-footer>
     </div>
   </div>
 </template>
 
-<style lang="scss"></style>
-
 <script>
 import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
-import DashboardContent from "./DashboardContent.vue";
-import SidebarShare from "./SidebarSharePlugin.vue";
-import MobileMenu from "./MobileMenu.vue";
-import SideBar from "@/components/SidebarPlugin/SideBar.vue";
-import SidebarLink from "@/components/SidebarPlugin/SidebarLink.vue";
+import DashboardContent from "./Content.vue";
+import MobileMenu from "@/pages/Layout/MobileMenu.vue";
+// import FixedPlugin from "./Extra/FixedPlugin.vue";
 
 export default {
   components: {
     TopNavbar,
     DashboardContent,
     ContentFooter,
-    // eslint-disable-next-line vue/no-unused-components
-    MobileMenu,
-    SideBar,
-    SidebarLink,
-    SidebarShare,
+    MobileMenu
   },
   data() {
     return {
-      backgroundColor: "green",
+      sidebarBackground: "green",
+      sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg"),
     };
-  },
-  computed: {
-    isRTL() {
-      return this.$rtl.isRTL;
-    },
-  },
-  methods: {
-    toggleSidebar() {
-      if (this.$sidebar.showSidebar) {
-        this.$sidebar.displaySidebar(false);
-      }
-    },
   },
 };
 </script>

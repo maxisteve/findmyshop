@@ -1,26 +1,23 @@
 <template>
   <footer class="footer">
-    <div class="container-fluid">
-      <ul class="nav">
-        <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link"> Tags </a>
-        </li>
-        <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link"> About Us </a>
-        </li>
-        <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link"> Blog </a>
-        </li>
-      </ul>
-      <div class="copyright">
-        &copy;
-        {{ new Date().getFullYear() }} made with
-        <i class="tim-icons icon-heart-2"></i> by
-        <a href="javascript:void(0)" target="_blank">Tags</a> for a
-        better web.
+    <div class="container">
+      <nav>
+        <ul>
+          <li>
+            <a href="https://www.creative-tim.com">Intellectuals</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright text-center">
+        &copy; {{ new Date().getFullYear() }}
+        <a href="https://www.creative-tim.com/?ref=mdf-vuejs" target="_blank"
+          >Intellectuals</a
+        >, made with <i class="fa fa-heart heart"></i> for a better web
       </div>
     </div>
   </footer>
 </template>
-<script></script>
+<script>
+export default {};
+</script>
 <style></style>

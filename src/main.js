@@ -1,55 +1,56 @@
-/*!
+// =========================================================
+// * Vue Material Dashboard - v1.5.1
+// =========================================================
+//
+// * Product Page: https://www.creative-tim.com/product/vue-material-dashboard
+// * Copyright 2023 Creative Tim (https://www.creative-tim.com)
+// * Licensed under MIT (https://github.com/creativetimofficial/vue-material-dashboard/blob/master/LICENSE.md)
+//
+// * Coded by Creative Tim
+//
+// =========================================================
+//
+// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-=========================================================
-* Tags
-=========================================================
-
- 
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
 import VueRouter from "vue-router";
-import SocialSharing from "vue-social-sharing";
-import VueGitHubButtons from "vue-github-buttons";
-import "vue-github-buttons/dist/vue-github-buttons.css";
-import App from "./App.vue";
-import "@/assets/scss/white-dashboard.scss";
-import "@/assets/css/nucleo-icons.css";
-import "@/assets/demo/demo.css";
-
-import GlobalComponents from "./globalComponents";
-import GlobalDirectives from "./globalDirectives";
-import RTLPlugin from "./RTLPlugin";
-import Notify from "@/components/NotificationPlugin";
-import i18n from "./i18n";
-import SideBar from "@/components/SidebarPlugin";
-
-Vue.config.productionTip = false;
+import App from "./App";
 
 // router setup
-import routes from "./router";
+import routes from "./routes/routes";
+
+// Plugins
+import GlobalComponents from "./globalComponents";
+import GlobalDirectives from "./globalDirectives";
+import Notifications from "./components/NotificationPlugin";
+
+// MaterialDashboard plugin
+import MaterialDashboard from "./material-dashboard";
+
+import Chartist from "chartist";
 
 // configure router
 const router = new VueRouter({
   routes, // short for routes: routes
-  linkExactActiveClass: "active",
+  linkExactActiveClass: "nav-item active",
 });
 
+Vue.prototype.$Chartist = Chartist;
+
 Vue.use(VueRouter);
-Vue.use(SocialSharing);
-Vue.use(VueGitHubButtons, { useCache: true });
+Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
-Vue.use(RTLPlugin);
-Vue.use(SideBar);
-Vue.use(Notify);
+Vue.use(Notifications);
 
+/* eslint-disable no-new */
 new Vue({
-  router,
-  i18n,
+  el: "#app",
   render: (h) => h(App),
-}).$mount("#app");
+  router,
+  data: {
+    Chartist: Chartist,
+  },
+});
